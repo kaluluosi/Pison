@@ -22,7 +22,7 @@ def islambda(s):
 def writeline():
     _lines.append('\n')
 
-def parse(obj,depth):
+def parse(obj,depth=0):
     if isinstance(obj,str):
         if islambda(obj):
             _lines.append(obj)
@@ -36,7 +36,7 @@ def parse(obj,depth):
         else:
             _lines.append(str(obj))
 
-def parse_dict(dic,depth):
+def parse_dict(dic,depth=0):
     _lines.append('{') #开头
     writeline() #换行
     depth+=1 #缩进增加
@@ -53,7 +53,7 @@ def parse_dict(dic,depth):
     depth-=1 #缩进还原
     _lines.append(tab(depth)+'}') #结束
 
-def parse_list(lst,depth):
+def parse_list(lst,depth=0):
     _lines.append('[') #开头
     writeline() #换行
     depth+=1 #缩进增加
@@ -68,10 +68,14 @@ def parse_list(lst,depth):
     depth-=1 #缩进还原
     _lines.append(tab(depth)+']') #结束
 
-def dumps(obj):
-    _lines=[]
+def dumps(obj,indent=True):
     parse(obj)
-    return _lines
+    c=''
+    if indent:
+        c = ''.join(_lines)
+    else:
+        c = ''.join([l.strip() for l in _lines])
+    return c
 
 def render():
     code = ''.join(_lines)
@@ -80,9 +84,9 @@ def render():
 
 def main():
     dic = { 'a':1,1:'2',2:{1:1,2:2},3:[1,2,4,5,6,7],4:"lambda :print('a')"}
-    parse_dict(dic,0)
-    render()
-
+    c = dumps(dic,False)
+    print(c)
+    
 if __name__ == '__main__':
     main()
 
