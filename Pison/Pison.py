@@ -1,7 +1,7 @@
 ﻿# 将dict对象格式化输出成字符串
 """
 author:kaluluosi
-date:2015.10.29
+date:2015-11-02
 
 dump pyton object to string and format it.
 
@@ -77,9 +77,6 @@ def dumps(obj,indent=True):
         c = ''.join([l.strip() for l in _lines])
     return c
 
-def render():
-    code = ''.join(_lines)
-    print(code)
 
 
 def main():

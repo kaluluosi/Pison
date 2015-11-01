@@ -22,6 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Exstruct.py" />
     <Compile Include="Pison.py" />
   </ItemGroup>
   <PropertyGroup>
