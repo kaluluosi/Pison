@@ -1,4 +1,4 @@
-﻿import struct
+﻿import _struct as struct
 
 """
 author:kaluluosi
